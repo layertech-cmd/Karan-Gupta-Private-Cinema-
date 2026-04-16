@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr. Karan Gupta — Home Cinema Proposal · Final Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0D1A;--bg-card:#13132A;--bg-raised:#1A1A35;--bg-input:#1E1E38;--border:rgba(255,255,255,0.06);--border-v:rgba(139,92,246,0.35);--border-v-dim:rgba(139,92,246,0.15);--purple:#8B5CF6;--purple-light:#A78BFA;--purple-bright:#C4B5FD;--purple-dim:rgba(139,92,246,0.12);--purple-glow:0 0 24px rgba(139,92,246,0.22);--pink:#EC4899;--grad-main:linear-gradient(135deg,#6D28D9 0%,#9333EA 50%,#EC4899 100%);--grad-card:linear-gradient(135deg,#6D28D9 0%,#7C3AED 100%);--grad-subtle:linear-gradient(135deg,rgba(109,40,217,0.25) 0%,rgba(147,51,234,0.1) 100%);--text:#F0EFFE;--text-muted:rgba(240,239,254,0.45);--text-dim:rgba(240,239,254,0.22);--font:'DM Sans',system-ui,sans-serif;--font-mono:'DM Mono',monospace;--radius:14px;--radius-sm:8px;--transition:280ms cubic-bezier(0.4,0,0.2,1)}
+[data-theme="light"]{--bg:#F5F4F9;--bg-card:#FFFFFF;--bg-raised:#EEEDF5;--bg-input:#E6E4F2;--border:rgba(0,0,0,0.07);--border-v:rgba(109,40,217,0.28);--border-v-dim:rgba(109,40,217,0.13);--purple:#7C3AED;--purple-light:#6D28D9;--purple-bright:#5B21B6;--purple-dim:rgba(109,40,217,0.07);--purple-glow:0 0 24px rgba(109,40,217,0.12);--grad-subtle:linear-gradient(135deg,rgba(109,40,217,0.1) 0%,rgba(147,51,234,0.05) 100%);--text:#1A1030;--text-muted:rgba(26,16,48,0.5);--text-dim:rgba(26,16,48,0.28)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13.5px;line-height:1.55;min-height:100vh;transition:background var(--transition),color var(--transition);-webkit-font-smoothing:antialiased}
+
+.top-bar{height:3px;background:var(--grad-main);background-size:200% 100%;animation:barSlide 3s linear infinite}
+@keyframes barSlide{0%{background-position:0 0}100%{background-position:200% 0}}
+
+.header{background:var(--bg-card);border-bottom:1px solid var(--border);padding:16px 36px;display:flex;align-items:center;justify-content:space-between;transition:background var(--transition)}
+.header-left{display:flex;flex-direction:column;gap:2px}
+.header-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--purple-light)}
+.header-title{font-size:17px;font-weight:800;color:var(--text);letter-spacing:-0.02em}
+.header-right{display:flex;align-items:center;gap:16px}
+.header-client{font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;text-align:right}
+.header-client span{display:block;font-size:13px;font-weight:800;color:var(--text);letter-spacing:-0.01em;text-transform:none}
+
+.theme-toggle{display:flex;align-items:center;gap:7px;background:var(--bg-raised);border:1px solid var(--border);border-radius:20px;padding:6px 12px 6px 10px;cursor:pointer;transition:var(--transition);font-family:var(--font);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted)}
+.theme-toggle:hover{border-color:var(--border-v);color:var(--text)}
+.toggle-track{width:30px;height:16px;border-radius:20px;background:var(--bg-input);border:1px solid var(--border-v);position:relative;transition:background var(--transition);flex-shrink:0}
+[data-theme="light"] .toggle-track{background:var(--grad-card)}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:var(--purple-light);transition:transform var(--transition),background var(--transition);box-shadow:0 1px 4px rgba(0,0,0,0.3)}
+[data-theme="light"] .toggle-thumb{transform:translateX(14px);background:#fff}
+
+.nav{background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 36px;display:flex;position:sticky;top:0;z-index:900;transition:background var(--transition);overflow-x:auto}
+.nav-tab{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);padding:14px 18px;cursor:pointer;border-bottom:2px solid transparent;transition:var(--transition);white-space:nowrap}
+.nav-tab:hover{color:var(--text)}.nav-tab.active{color:var(--purple-light);border-bottom-color:var(--purple)}
+
+.main{padding:28px 36px 64px;max-width:1440px;margin:0 auto}
+.tab-panel{display:none}.tab-panel.active{display:block;animation:fadeUp 220ms ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.sec-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--purple-light);margin-bottom:4px}
+.sec-title{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.03em;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border-v-dim)}
+
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:var(--transition)}
+.card:hover{border-color:var(--border-v-dim)}
+.card-title{font-size:12px;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;padding-bottom:11px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:3px 9px;border-radius:20px;background:var(--purple-dim);color:var(--purple-light);border:1px solid var(--border-v)}
+
+/* Matrix Intro Block */
+.matrix-intro{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:24px;position:relative;overflow:hidden}
+.matrix-intro::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-main)}
+.matrix-desc{font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:6px}
+.matrix-grid{display:grid;grid-template-columns:auto repeat(2,1fr);gap:0;margin-top:22px;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.mx-corner{background:var(--bg-raised);padding:14px 16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.mx-col-head{background:var(--bg-raised);padding:14px 16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.mx-col-head:last-child{border-right:none}
+.mx-col-head .mx-ch-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:4px}
+.mx-col-head .mx-ch-name{font-size:14px;font-weight:800;color:var(--text);letter-spacing:-0.01em}
+.mx-col-head .mx-ch-sub{font-size:10px;color:var(--text-muted);margin-top:2px}
+.mx-row-head{background:var(--bg-raised);padding:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);min-width:180px}
+.mx-row-head:last-of-type{border-bottom:none}
+.mx-row-head .mx-rh-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:4px}
+.mx-row-head .mx-rh-name{font-size:14px;font-weight:800;color:var(--text);letter-spacing:-0.01em}
+.mx-row-head .mx-rh-sub{font-size:10px;color:var(--text-muted);margin-top:2px}
+.mx-cell{padding:16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:var(--transition);cursor:pointer;position:relative}
+.mx-cell:last-child{border-right:none}
+.mx-cell:hover{background:var(--purple-dim)}
+.mx-cell-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.13em;color:var(--purple-light);margin-bottom:4px}
+.mx-cell-amount{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1;font-family:var(--font-mono)}
+.mx-cell-sub{font-size:10px;color:var(--text-muted);margin-top:6px}
+.mx-cell.last-row{border-bottom:none}
+
+/* Design Intent */
+.di-block{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:24px;position:relative;overflow:hidden;transition:var(--transition)}
+.di-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-main)}
+.di-block:hover{border-color:var(--border-v-dim)}
+.di-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--purple-light);margin-bottom:8px}
+.di-heading{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.03em;margin-bottom:14px}
+.di-desc{font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:20px}
+.di-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.di-pillar{background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;text-align:center;transition:var(--transition)}
+.di-pillar:hover{border-color:var(--border-v);transform:translateY(-2px)}
+.di-pillar-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;background:var(--grad-subtle);border:1px solid var(--border-v)}
+.di-pillar-name{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text);margin-bottom:2px}
+.di-pillar-sub{font-size:9px;color:var(--text-muted)}
+
+/* Pricing Flow */
+.pricing-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:28px}
+.pf-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;position:relative;overflow:hidden;transition:var(--transition)}
+.pf-card:hover{border-color:var(--border-v);transform:translateY(-2px);box-shadow:var(--purple-glow)}
+.pf-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-main)}
+.pf-card.strike .pf-amount{text-decoration:line-through;opacity:0.5}
+.pf-card.discount-card{background:linear-gradient(135deg,#be185d 0%,#7c3aed 100%);border-color:rgba(236,72,153,0.4)}
+.pf-card.discount-card::after{background:rgba(255,255,255,0.15)}
+.pf-card.discount-card .pf-label,.pf-card.final-card .pf-label{color:rgba(255,255,255,0.5)}
+.pf-card.discount-card .pf-amount,.pf-card.final-card .pf-amount{color:#fff}
+.pf-card.discount-card .pf-sub,.pf-card.final-card .pf-sub{color:rgba(255,255,255,0.45)}
+.pf-card.final-card{background:var(--grad-card);border-color:rgba(139,92,246,0.4)}
+.pf-card.final-card::after{background:rgba(255,255,255,0.15)}
+.pf-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-muted);margin-bottom:10px}
+.pf-amount{font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1}
+.pf-sub{font-size:10px;color:var(--text-muted);margin-top:6px}
+.pf-arrow{display:flex;align-items:center;justify-content:center;padding:0 8px}
+.pf-arrow svg{width:28px;height:28px;color:var(--purple-light);opacity:0.5}
+.savings-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(16,185,129,0.12),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;color:#10b981;margin-top:8px}
+
+/* Sub-Nav */
+.sub-nav{display:flex;gap:0;background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:24px;width:fit-content}
+.sub-tab{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.11em;padding:10px 22px;cursor:pointer;background:transparent;color:var(--text-muted);border:none;transition:var(--transition);font-family:var(--font);white-space:nowrap}
+.sub-tab:hover{color:var(--text)}.sub-tab.active{background:var(--grad-main);color:#fff}
+.sub-panel{display:none}.sub-panel.active{display:block;animation:fadeUp 200ms ease}
+
+/* Tables */
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{font-size:9px;text-transform:uppercase;letter-spacing:0.13em;color:var(--text-muted);font-weight:700;padding:9px 11px;text-align:left;background:var(--bg-raised);border-bottom:1px solid var(--border)}
+thead th.r{text-align:right}
+tbody td{padding:10px 11px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;transition:var(--transition)}
+tbody td.r{text-align:right;font-weight:600;vertical-align:middle}
+tbody tr:hover td{background:var(--purple-dim)}
+tbody tr.tot-row td{font-weight:800;color:var(--text);background:var(--bg-raised);border-top:1px solid var(--border-v);font-size:12.5px;cursor:default;vertical-align:middle}
+.prod-name{font-weight:600;color:var(--text);margin-bottom:2px}.prod-desc{font-size:10.5px;color:var(--text-muted);line-height:1.45}
+
+/* Total Hero */
+.total-hero{background:var(--grad-card);border-radius:var(--radius);padding:24px 30px;display:flex;align-items:center;justify-content:space-between;margin-top:20px;position:relative;overflow:hidden}
+.total-hero::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.total-hero-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.17em;color:rgba(255,255,255,0.5);margin-bottom:5px}
+.total-hero-name{font-size:13px;font-weight:500;color:rgba(255,255,255,0.65)}
+.total-hero-amount{font-size:33px;font-weight:800;color:#fff;letter-spacing:-0.04em}
+.total-hero-note{font-size:9px;color:rgba(255,255,255,0.38);margin-top:3px}
+
+/* Compare Grid */
+.compare-grid{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:0;margin-top:20px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.cg-header{background:var(--bg-raised);padding:12px 14px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.13em;color:var(--text-muted);border-bottom:1px solid var(--border)}.cg-header.r{text-align:right}
+.cg-cell{padding:11px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--text);transition:var(--transition)}.cg-cell.r{text-align:right;font-weight:600;font-family:var(--font-mono);font-size:11px}.cg-cell.highlight{color:var(--purple-light);font-weight:800}
+.cg-total{background:var(--bg-raised);padding:12px 14px;font-weight:800;font-size:13px;border-top:1px solid var(--border-v)}.cg-total.r{text-align:right;font-family:var(--font-mono)}
+
+/* Brightness (projectors only) */
+.bright-bars{display:flex;flex-direction:column;gap:16px;margin-bottom:18px}
+.bb-row{display:flex;flex-direction:column;gap:6px}
+.bb-head{display:flex;justify-content:space-between;align-items:baseline}
+.bb-name{font-size:12px;font-weight:700;color:var(--text);letter-spacing:-0.01em}
+.bb-val{font-size:14px;font-weight:800;font-family:var(--font-mono);letter-spacing:-0.02em}
+.bb-track{height:10px;border-radius:5px;background:var(--border);overflow:hidden}
+.bb-fill{height:100%;border-radius:5px;transition:width 800ms cubic-bezier(0.4,0,0.2,1)}
+.bb-note{font-size:10.5px;color:var(--text-muted);line-height:1.5;margin-top:2px}
+.callout{background:var(--purple-dim);border:1px solid var(--border-v-dim);border-radius:var(--radius-sm);padding:12px 14px;margin-top:4px;font-size:11.5px;color:var(--text);line-height:1.55}
+.callout-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.15em;color:var(--purple-light);margin-bottom:5px}
+
+/* Option variant header pill */
+.opt-variant{display:inline-flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.opt-chip{background:var(--purple-dim);border:1px solid var(--border-v);color:var(--purple-light);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;padding:5px 11px;border-radius:20px}
+
+.footer{border-top:1px solid var(--border);padding:16px 36px;display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.footer-l1{font-size:12px;font-weight:800;color:var(--text-muted);letter-spacing:-0.01em}.footer-l1 span{color:var(--purple-light)}
+.footer-ref{font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em}
+
+@media(max-width:1100px){.compare-grid{grid-template-columns:1.5fr repeat(4,1fr);font-size:10.5px}.cg-cell.r,.cg-total.r{font-size:10px}}
+@media(max-width:900px){.main,.header,.footer,.nav{padding-left:16px;padding-right:16px}.pricing-flow{grid-template-columns:1fr;gap:12px}.pf-arrow{transform:rotate(90deg);padding:4px 0}.di-pillars{grid-template-columns:1fr 1fr}.compare-grid{grid-template-columns:1.2fr 1fr 1fr}.compare-grid .cg-header:nth-child(4),.compare-grid .cg-header:nth-child(5),.compare-grid .cg-cell:nth-child(9n+4),.compare-grid .cg-cell:nth-child(9n+5){display:none}.matrix-grid{grid-template-columns:1fr}.mx-row-head{border-right:none}.mx-cell{border-right:none}}
+@media(max-width:600px){.di-pillars{grid-template-columns:1fr}.pf-amount{font-size:22px}}
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<div class="header">
+  <div class="header-left">
+    <div class="header-eyebrow">Layer 1 Group · Home Cinema · Final Proposal</div>
+    <div class="header-title">Private Cinema Proposal — 4 Configurations</div>
+  </div>
+  <div class="header-right">
+    <div class="header-client">Client<span>Mr. Karan Gupta</span></div>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      <span id="theme-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
+      <span id="theme-label">Light</span>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="nav-tab active" onclick="showTab('opt1',this)">Opt 1 · Ref+Medea</div>
+  <div class="nav-tab" onclick="showTab('opt2',this)">Opt 2 · Ref+I600</div>
+  <div class="nav-tab" onclick="showTab('opt3',this)">Opt 3 · Perf+Medea</div>
+  <div class="nav-tab" onclick="showTab('opt4',this)">Opt 4 · Perf+I600</div>
+  <div class="nav-tab" onclick="showTab('projcompare',this)">Projector Comparison</div>
+  <div class="nav-tab" onclick="showTab('compare',this)">Compare All</div>
+</div>
+
+<div class="main">
+
+<!-- ===================== OPTION 1 — REFERENCE AUDIO + MEDEA ===================== -->
+<div id="tab-opt1" class="tab-panel active">
+  <div class="opt-variant">
+    <span class="opt-chip">Audio · Reference</span>
+    <span class="opt-chip">Projector · Barco Medea</span>
+  </div>
+  <div class="di-block">
+    <div class="di-label">Option 1 · Reference Audio + Medea</div>
+    <div class="di-heading">The Uncompromised Reference Cinema</div>
+    <div class="di-desc">The flagship configuration — Wisdom Audio's planar-magnetic speaker architecture paired with Trinnov's reference-class 3D-optimised Altitude processor and Amplitude amplification, driven by Barco's cinema-grade Medea laser projector. A no-compromise immersive audio-visual experience delivering a system that rivals the world's finest private screening rooms.</div>
+    <div class="di-pillars">
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div><div class="di-pillar-name">Audio</div><div class="di-pillar-sub">Wisdom P6i + P4i + Trinnov Altitude & Amplitude</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/><line x1="17" y1="17" x2="22" y2="17"/></svg></div><div class="di-pillar-name">Video</div><div class="di-pillar-sub">Barco Medea · 6,500 lm · 12ft AT Screen</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M3 21h18"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h2"/></svg></div><div class="di-pillar-name">Seating</div><div class="di-pillar-sub">Motorised Recliners · Client Selection</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="di-pillar-name">Integration</div><div class="di-pillar-sub">Trinnov 3D Room Optimisation</div></div>
+    </div>
+  </div>
+  <div class="pricing-flow">
+    <div class="pf-card strike"><div class="pf-label">Total List Price</div><div class="pf-amount">₹1,38,74,679</div><div class="pf-sub">Design intent — all components at MRP</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card discount-card"><div class="pf-label">Your Discount</div><div class="pf-amount">– ₹49,31,877</div><div class="pf-sub">Exclusive offer for Mr. Gupta</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card final-card"><div class="pf-label">Final Offer Price</div><div class="pf-amount">₹89,42,802</div><div class="pf-sub">All-inclusive · Prices include taxes</div><div class="savings-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>You save ₹49,31,877</div></div>
+  </div>
+  <div class="sub-nav">
+    <button class="sub-tab active" onclick="showSub('o1-audio',this)">Audio BOQ</button>
+    <button class="sub-tab" onclick="showSub('o1-video',this)">Video BOQ</button>
+    <button class="sub-tab" onclick="showSub('o1-summary',this)">Pricing Summary</button>
+  </div>
+  <div id="sub-o1-audio" class="sub-panel active">
+    <div class="card">
+      <div class="card-title">Reference Audio · Bill of Quantities <span class="card-badge">7 Products</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Wisdom Audio Insight P6i</div><div class="prod-desc">Flagship planar-magnetic in-wall speaker for L/C/R channels. Ultra-low distortion line-source driver with wide, controlled dispersion for cinematic front-stage imaging.</div></td><td class="r">3</td><td class="r">6,27,490</td><td class="r">18,82,470</td></tr>
+          <tr><td>2</td><td><div class="prod-name">Wisdom Audio Insight P4i</div><div class="prod-desc">Planar-magnetic in-wall surround speaker. Matched tonality with the P6i front stage for seamless 360° immersive panning and envelopment.</div></td><td class="r">4</td><td class="r">3,79,109</td><td class="r">15,16,436</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Phase Technology CI7.3X</div><div class="prod-desc">Three-way in-ceiling speaker for Dolby Atmos / DTS:X overhead height channels.</div></td><td class="r">6</td><td class="r">54,000</td><td class="r">3,24,000</td></tr>
+          <tr><td>4</td><td><div class="prod-name">MAG DBA18 Subwoofers</div><div class="prod-desc">Dual-bandpass 18″ subwoofer with sealed cabinet architecture. Deep bass extension below 20 Hz for cinema-grade low-frequency impact.</div></td><td class="r">2</td><td class="r">2,20,000</td><td class="r">4,40,000</td></tr>
+          <tr><td>5</td><td><div class="prod-name">MAG Amp</div><div class="prod-desc">Dedicated high-current subwoofer amplifier matched to the DBA18 drivers.</div></td><td class="r">1</td><td class="r">5,60,000</td><td class="r">5,60,000</td></tr>
+          <tr><td>6</td><td><div class="prod-name">Trinnov Altitude Processor (16/32 Ch)</div><div class="prod-desc">Reference immersive audio processor with 3D room optimisation. Dolby Atmos, DTS:X, Auro-3D with Trinnov's proprietary acoustic correction engine.</div></td><td class="r">1</td><td class="r">19,50,000</td><td class="r">19,50,000</td></tr>
+          <tr><td>7</td><td><div class="prod-name">Trinnov Amplitude Amplifiers (8/16 Ch)</div><div class="prod-desc">Multi-channel Class-AB power amplifier for Trinnov ecosystem integration. High-headroom output stages for full-range speaker drive.</div></td><td class="r">1</td><td class="r">12,95,000</td><td class="r">12,95,000</td></tr>
+          <tr class="tot-row"><td></td><td>Audio System Total</td><td class="r"></td><td class="r"></td><td class="r">₹79,67,906</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o1-video" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Video & Projection · Barco Medea <span class="card-badge">3 Products</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Barco Medea Projector with Lens</div><div class="prod-desc">Cinema-grade 4K UHD laser phosphor projector · 6,500 ANSI lumens · custom aspherical-glass optics · Barco Pulse SSP with HDR10 · tuned for dedicated home cinema rooms.</div></td><td class="r">1</td><td class="r">41,00,000</td><td class="r">41,00,000</td></tr>
+          <tr><td>2</td><td><div class="prod-name">12ft Acoustic Transparent Screen</div><div class="prod-desc">Fixed-frame acoustically transparent screen allowing front speakers to sit directly behind the screen for perfect audio-visual alignment.</div></td><td class="r">1</td><td class="r">3,15,000</td><td class="r">3,15,000</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Projector Stand</div><div class="prod-desc">Custom ceiling mount engineered for the Barco projector. Vibration-isolated platform.</div></td><td class="r">1</td><td class="r">5,200</td><td class="r">5,200</td></tr>
+          <tr class="tot-row"><td></td><td>Video System Total</td><td class="r"></td><td class="r"></td><td class="r">₹44,20,200</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o1-summary" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Option 1 · Pricing Summary <span class="card-badge">Discounted</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Component</th><th class="r">List (₹)</th><th class="r">Offer (₹)</th><th class="r">Savings (₹)</th></tr></thead>
+        <tbody>
+          <tr><td><div class="prod-name">Reference Audio System</div><div class="prod-desc">LCR, Surrounds, Heights, Subs, Trinnov Altitude Processor & Amplitude</div></td><td class="r">79,67,906</td><td class="r">54,50,402</td><td class="r" style="color:#10b981;font-weight:700">25,17,504</td></tr>
+          <tr><td><div class="prod-name">Video & Projection · Barco Medea</div><div class="prod-desc">Flagship cinema-grade laser projector, mount & acoustic transparent screen</div></td><td class="r">44,20,200</td><td class="r">31,42,400</td><td class="r" style="color:#10b981;font-weight:700">12,77,800</td></tr>
+          <tr><td><div class="prod-name">Premium Seating</div><div class="prod-desc">Motorised recliners — client selection</div></td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r">—</td></tr>
+          <tr><td><div class="prod-name">Installation & Calibration</div><div class="prod-desc">Cabling, integration, rack assembly & Trinnov 3D optimisation</div></td><td class="r">14,86,573</td><td class="r">3,50,000</td><td class="r" style="color:#10b981;font-weight:700">11,36,573</td></tr>
+          <tr class="tot-row"><td>Total</td><td class="r">₹1,38,74,679</td><td class="r">₹89,42,802</td><td class="r" style="color:#10b981">₹49,31,877</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="total-hero"><div><div class="total-hero-lbl">Option 1 · Final Offer</div><div class="total-hero-name">Reference Audio + Barco Medea</div></div><div style="text-align:right"><div class="total-hero-amount">₹89,42,802</div><div class="total-hero-note">Seating at actuals · Prices include taxes</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== OPTION 2 — REFERENCE AUDIO + I600 ===================== -->
+<div id="tab-opt2" class="tab-panel">
+  <div class="opt-variant">
+    <span class="opt-chip">Audio · Reference</span>
+    <span class="opt-chip">Projector · Barco I600 4k8</span>
+  </div>
+  <div class="di-block">
+    <div class="di-label">Option 2 · Reference Audio + I600</div>
+    <div class="di-heading">Reference Audio with Smart-Value Projection</div>
+    <div class="di-desc">Identical reference-grade audio system as Option 1 — Wisdom Audio planar-magnetic front stage, Trinnov Altitude processor and Amplitude amplification — paired with Barco's professional-grade I600 4k8 laser projector. You retain the full audiophile signal chain while making a significant saving on projection. The I600 actually delivers higher brightness (8,000 lm vs 6,500 lm) alongside Barco's proven colour science.</div>
+    <div class="di-pillars">
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div><div class="di-pillar-name">Audio</div><div class="di-pillar-sub">Wisdom P6i + P4i + Trinnov Altitude & Amplitude</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/><line x1="17" y1="17" x2="22" y2="17"/></svg></div><div class="di-pillar-name">Video</div><div class="di-pillar-sub">Barco I600 4k8 · 8,000 lm · 12ft AT Screen</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M3 21h18"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h2"/></svg></div><div class="di-pillar-name">Seating</div><div class="di-pillar-sub">Motorised Recliners · Client Selection</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="di-pillar-name">Integration</div><div class="di-pillar-sub">Trinnov 3D Room Optimisation</div></div>
+    </div>
+  </div>
+  <div class="pricing-flow">
+    <div class="pf-card strike"><div class="pf-label">Total List Price</div><div class="pf-amount">₹1,25,24,679</div><div class="pf-sub">Design intent — all components at MRP</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card discount-card"><div class="pf-label">Your Discount</div><div class="pf-amount">– ₹45,98,822</div><div class="pf-sub">Exclusive offer for Mr. Gupta</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card final-card"><div class="pf-label">Final Offer Price</div><div class="pf-amount">₹79,25,857</div><div class="pf-sub">All-inclusive · Prices include taxes</div><div class="savings-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>You save ₹45,98,822</div></div>
+  </div>
+  <div class="sub-nav">
+    <button class="sub-tab active" onclick="showSub('o2-audio',this)">Audio BOQ</button>
+    <button class="sub-tab" onclick="showSub('o2-video',this)">Video BOQ</button>
+    <button class="sub-tab" onclick="showSub('o2-summary',this)">Pricing Summary</button>
+  </div>
+  <div id="sub-o2-audio" class="sub-panel active">
+    <div class="card">
+      <div class="card-title">Reference Audio · Bill of Quantities <span class="card-badge">Same as Option 1</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Wisdom Audio Insight P6i</div><div class="prod-desc">Flagship planar-magnetic in-wall speaker for L/C/R channels.</div></td><td class="r">3</td><td class="r">6,27,490</td><td class="r">18,82,470</td></tr>
+          <tr><td>2</td><td><div class="prod-name">Wisdom Audio Insight P4i</div><div class="prod-desc">Planar-magnetic in-wall surround speaker matched to the P6i front stage.</div></td><td class="r">4</td><td class="r">3,79,109</td><td class="r">15,16,436</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Phase Technology CI7.3X</div><div class="prod-desc">Three-way in-ceiling speaker for Dolby Atmos / DTS:X height channels.</div></td><td class="r">6</td><td class="r">54,000</td><td class="r">3,24,000</td></tr>
+          <tr><td>4</td><td><div class="prod-name">MAG DBA18 Subwoofers</div><div class="prod-desc">Dual-bandpass 18″ subwoofer with sealed cabinet architecture.</div></td><td class="r">2</td><td class="r">2,20,000</td><td class="r">4,40,000</td></tr>
+          <tr><td>5</td><td><div class="prod-name">MAG Amp</div><div class="prod-desc">Dedicated high-current subwoofer amplifier matched to the DBA18 drivers.</div></td><td class="r">1</td><td class="r">5,60,000</td><td class="r">5,60,000</td></tr>
+          <tr><td>6</td><td><div class="prod-name">Trinnov Altitude Processor (16/32 Ch)</div><div class="prod-desc">Reference immersive audio processor with 3D room optimisation.</div></td><td class="r">1</td><td class="r">19,50,000</td><td class="r">19,50,000</td></tr>
+          <tr><td>7</td><td><div class="prod-name">Trinnov Amplitude Amplifiers (8/16 Ch)</div><div class="prod-desc">Multi-channel Class-AB power amplifier for Trinnov ecosystem integration.</div></td><td class="r">1</td><td class="r">12,95,000</td><td class="r">12,95,000</td></tr>
+          <tr class="tot-row"><td></td><td>Audio System Total</td><td class="r"></td><td class="r"></td><td class="r">₹79,67,906</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o2-video" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Video & Projection · Barco I600 4k8 <span class="card-badge">3 Products</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Barco I600 4k8 Projector with Lens</div><div class="prod-desc">Professional-grade 4K UHD laser phosphor projector · 8,000 ISO lumens · DynaBlack contrast up to 20,000:1 · HDMI 2.1 for 4K@120Hz HDR · same Barco colour science as the Medea in a more cost-effective platform.</div></td><td class="r">1</td><td class="r">27,50,000</td><td class="r">27,50,000</td></tr>
+          <tr><td>2</td><td><div class="prod-name">12ft Acoustic Transparent Screen</div><div class="prod-desc">Fixed-frame acoustically transparent screen for speakers positioned behind the screen.</div></td><td class="r">1</td><td class="r">3,15,000</td><td class="r">3,15,000</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Projector Stand</div><div class="prod-desc">Custom ceiling mount engineered for the Barco projector.</div></td><td class="r">1</td><td class="r">5,200</td><td class="r">5,200</td></tr>
+          <tr class="tot-row"><td></td><td>Video System Total</td><td class="r"></td><td class="r"></td><td class="r">₹30,70,200</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o2-summary" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Option 2 · Pricing Summary <span class="card-badge">Discounted</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Component</th><th class="r">List (₹)</th><th class="r">Offer (₹)</th><th class="r">Savings (₹)</th></tr></thead>
+        <tbody>
+          <tr><td><div class="prod-name">Reference Audio System</div><div class="prod-desc">LCR, Surrounds, Heights, Subs, Trinnov Altitude Processor & Amplitude</div></td><td class="r">79,67,906</td><td class="r">54,50,402</td><td class="r" style="color:#10b981;font-weight:700">25,17,504</td></tr>
+          <tr><td><div class="prod-name">Video & Projection · Barco I600 4k8</div><div class="prod-desc">Professional installation laser projector, mount & acoustic transparent screen</div></td><td class="r">30,70,200</td><td class="r">21,25,455</td><td class="r" style="color:#10b981;font-weight:700">9,44,745</td></tr>
+          <tr><td><div class="prod-name">Premium Seating</div><div class="prod-desc">Motorised recliners — client selection</div></td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r">—</td></tr>
+          <tr><td><div class="prod-name">Installation & Calibration</div><div class="prod-desc">Cabling, integration, rack assembly & Trinnov 3D optimisation</div></td><td class="r">14,86,573</td><td class="r">3,50,000</td><td class="r" style="color:#10b981;font-weight:700">11,36,573</td></tr>
+          <tr class="tot-row"><td>Total</td><td class="r">₹1,25,24,679</td><td class="r">₹79,25,857</td><td class="r" style="color:#10b981">₹45,98,822</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="total-hero"><div><div class="total-hero-lbl">Option 2 · Final Offer</div><div class="total-hero-name">Reference Audio + Barco I600</div></div><div style="text-align:right"><div class="total-hero-amount">₹79,25,857</div><div class="total-hero-note">Seating at actuals · Prices include taxes</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== OPTION 3 — PERFORMANCE AUDIO + MEDEA ===================== -->
+<div id="tab-opt3" class="tab-panel">
+  <div class="opt-variant">
+    <span class="opt-chip">Audio · Performance</span>
+    <span class="opt-chip">Projector · Barco Medea</span>
+  </div>
+  <div class="di-block">
+    <div class="di-label">Option 3 · Performance Audio + Medea</div>
+    <div class="di-heading">Flagship Projection with Performance Audio</div>
+    <div class="di-desc">Keep the flagship Barco Medea cinema-grade projector while optimising the audio tier for exceptional value. Wisdom Audio P6i planar-magnetic front stage remains, paired with Phasetech CI 70X surrounds and the Anthem AVM 70 processor. The core cinematic experience stays intact — reference projection, premium LCR and subwoofers — at a materially lower investment.</div>
+    <div class="di-pillars">
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div><div class="di-pillar-name">Audio</div><div class="di-pillar-sub">Wisdom P6i + Phasetech CI 70X + Anthem AVM 70</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/><line x1="17" y1="17" x2="22" y2="17"/></svg></div><div class="di-pillar-name">Video</div><div class="di-pillar-sub">Barco Medea · 6,500 lm · 12ft AT Screen</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M3 21h18"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h2"/></svg></div><div class="di-pillar-name">Seating</div><div class="di-pillar-sub">Motorised Recliners · Client Selection</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="di-pillar-name">Integration</div><div class="di-pillar-sub">Anthem ARC Genesis Calibration</div></div>
+    </div>
+  </div>
+  <div class="pricing-flow">
+    <div class="pf-card strike"><div class="pf-label">Total List Price</div><div class="pf-amount">₹1,08,24,430</div><div class="pf-sub">Design intent — all components at MRP</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card discount-card"><div class="pf-label">Your Discount</div><div class="pf-amount">– ₹43,91,630</div><div class="pf-sub">Exclusive offer for Mr. Gupta</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card final-card"><div class="pf-label">Final Offer Price</div><div class="pf-amount">₹64,32,800</div><div class="pf-sub">All-inclusive · Prices include taxes</div><div class="savings-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>You save ₹43,91,630</div></div>
+  </div>
+  <div class="sub-nav">
+    <button class="sub-tab active" onclick="showSub('o3-audio',this)">Audio BOQ</button>
+    <button class="sub-tab" onclick="showSub('o3-video',this)">Video BOQ</button>
+    <button class="sub-tab" onclick="showSub('o3-summary',this)">Pricing Summary</button>
+  </div>
+  <div id="sub-o3-audio" class="sub-panel active">
+    <div class="card">
+      <div class="card-title">Performance Audio · Bill of Quantities <span class="card-badge">7 Products</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Wisdom Audio Insight P6i</div><div class="prod-desc">Flagship planar-magnetic in-wall speaker for L/C/R channels.</div></td><td class="r">3</td><td class="r">6,27,490</td><td class="r">18,82,470</td></tr>
+          <tr><td>2</td><td><div class="prod-name">Phasetech CI 70X</div><div class="prod-desc">High-performance in-wall surround speaker with coaxial driver design. Wide dispersion and smooth off-axis response.</div></td><td class="r">4</td><td class="r">57,000</td><td class="r">2,28,000</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Phase Technology CI7.3X</div><div class="prod-desc">Three-way in-ceiling speaker for Dolby Atmos / DTS:X height channels.</div></td><td class="r">6</td><td class="r">54,000</td><td class="r">3,24,000</td></tr>
+          <tr><td>4</td><td><div class="prod-name">MAG DBA18 Subwoofers</div><div class="prod-desc">Dual-bandpass 18″ subwoofer with sealed cabinet architecture.</div></td><td class="r">2</td><td class="r">2,20,000</td><td class="r">4,40,000</td></tr>
+          <tr><td>5</td><td><div class="prod-name">MAG Amp</div><div class="prod-desc">Dedicated high-current subwoofer amplifier.</div></td><td class="r">1</td><td class="r">5,60,000</td><td class="r">5,60,000</td></tr>
+          <tr><td>6</td><td><div class="prod-name">Trinnov Amplitude Amplifiers (8/16 Ch)</div><div class="prod-desc">Multi-channel Class-AB power amplifier. Pairs with the Anthem AVM 70 processor.</div></td><td class="r">1</td><td class="r">12,95,000</td><td class="r">12,95,000</td></tr>
+          <tr><td>7</td><td><div class="prod-name">Anthem AVM 70</div><div class="prod-desc">Premium AV processor with Anthem Room Correction (ARC Genesis). Dolby Atmos, DTS:X, IMAX Enhanced. 15.4-channel pre-amp outputs.</div></td><td class="r">1</td><td class="r">5,15,000</td><td class="r">5,15,000</td></tr>
+          <tr class="tot-row"><td></td><td>Audio System Total</td><td class="r"></td><td class="r"></td><td class="r">₹52,44,470</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o3-video" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Video & Projection · Barco Medea <span class="card-badge">Same as Option 1</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Barco Medea Projector with Lens</div><div class="prod-desc">Cinema-grade 4K UHD laser phosphor projector · 6,500 ANSI lumens · custom aspherical-glass optics · Barco Pulse SSP with HDR10.</div></td><td class="r">1</td><td class="r">41,00,000</td><td class="r">41,00,000</td></tr>
+          <tr><td>2</td><td><div class="prod-name">12ft Acoustic Transparent Screen</div><div class="prod-desc">Fixed-frame acoustically transparent screen.</div></td><td class="r">1</td><td class="r">3,15,000</td><td class="r">3,15,000</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Projector Stand</div><div class="prod-desc">Custom ceiling mount.</div></td><td class="r">1</td><td class="r">5,200</td><td class="r">5,200</td></tr>
+          <tr class="tot-row"><td></td><td>Video System Total</td><td class="r"></td><td class="r"></td><td class="r">₹44,20,200</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o3-summary" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Option 3 · Pricing Summary <span class="card-badge">Discounted</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Component</th><th class="r">List (₹)</th><th class="r">Offer (₹)</th><th class="r">Savings (₹)</th></tr></thead>
+        <tbody>
+          <tr><td><div class="prod-name">Performance Audio System</div><div class="prod-desc">Wisdom LCR, Phasetech Surrounds, Heights, Subs, Anthem AVM 70 Processor & Trinnov Amplitude</div></td><td class="r">52,44,470</td><td class="r">29,40,400</td><td class="r" style="color:#10b981;font-weight:700">23,04,070</td></tr>
+          <tr><td><div class="prod-name">Video & Projection · Barco Medea</div><div class="prod-desc">Flagship cinema-grade laser projector, mount & acoustic transparent screen</div></td><td class="r">44,20,200</td><td class="r">31,42,400</td><td class="r" style="color:#10b981;font-weight:700">12,77,800</td></tr>
+          <tr><td><div class="prod-name">Premium Seating</div><div class="prod-desc">Motorised recliners — client selection</div></td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r">—</td></tr>
+          <tr><td><div class="prod-name">Installation & Calibration</div><div class="prod-desc">Cabling, integration, rack assembly & Anthem ARC Genesis calibration</div></td><td class="r">11,59,760</td><td class="r">3,50,000</td><td class="r" style="color:#10b981;font-weight:700">8,09,760</td></tr>
+          <tr class="tot-row"><td>Total</td><td class="r">₹1,08,24,430</td><td class="r">₹64,32,800</td><td class="r" style="color:#10b981">₹43,91,630</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="total-hero"><div><div class="total-hero-lbl">Option 3 · Final Offer</div><div class="total-hero-name">Performance Audio + Barco Medea</div></div><div style="text-align:right"><div class="total-hero-amount">₹64,32,800</div><div class="total-hero-note">Seating at actuals · Prices include taxes</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== OPTION 4 — PERFORMANCE AUDIO + I600 ===================== -->
+<div id="tab-opt4" class="tab-panel">
+  <div class="opt-variant">
+    <span class="opt-chip">Audio · Performance</span>
+    <span class="opt-chip">Projector · Barco I600 4k8</span>
+  </div>
+  <div class="di-block">
+    <div class="di-label">Option 4 · Performance Audio + I600</div>
+    <div class="di-heading">The Best-Value Barco Cinema</div>
+    <div class="di-desc">The most efficient configuration in the lineup — Wisdom Audio planar-magnetic front stage with Phasetech surrounds and the Anthem AVM 70 processor, paired with Barco's professional-grade I600 4k8 laser projector. Retains Wisdom's flagship LCR and dual MAG subwoofers for cinema-grade bass and imaging, with Barco colour science in projection — all at the lowest total investment of the four options.</div>
+    <div class="di-pillars">
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div><div class="di-pillar-name">Audio</div><div class="di-pillar-sub">Wisdom P6i + Phasetech CI 70X + Anthem AVM 70</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/><line x1="17" y1="17" x2="22" y2="17"/></svg></div><div class="di-pillar-name">Video</div><div class="di-pillar-sub">Barco I600 4k8 · 8,000 lm · 12ft AT Screen</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M3 21h18"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h2"/></svg></div><div class="di-pillar-name">Seating</div><div class="di-pillar-sub">Motorised Recliners · Client Selection</div></div>
+      <div class="di-pillar"><div class="di-pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="di-pillar-name">Integration</div><div class="di-pillar-sub">Anthem ARC Genesis Calibration</div></div>
+    </div>
+  </div>
+  <div class="pricing-flow">
+    <div class="pf-card strike"><div class="pf-label">Total List Price</div><div class="pf-amount">₹94,74,430</div><div class="pf-sub">Design intent — all components at MRP</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card discount-card"><div class="pf-label">Your Discount</div><div class="pf-amount">– ₹40,58,575</div><div class="pf-sub">Exclusive offer for Mr. Gupta</div></div>
+    <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    <div class="pf-card final-card"><div class="pf-label">Final Offer Price</div><div class="pf-amount">₹54,15,855</div><div class="pf-sub">All-inclusive · Prices include taxes</div><div class="savings-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>You save ₹40,58,575</div></div>
+  </div>
+  <div class="sub-nav">
+    <button class="sub-tab active" onclick="showSub('o4-audio',this)">Audio BOQ</button>
+    <button class="sub-tab" onclick="showSub('o4-video',this)">Video BOQ</button>
+    <button class="sub-tab" onclick="showSub('o4-summary',this)">Pricing Summary</button>
+  </div>
+  <div id="sub-o4-audio" class="sub-panel active">
+    <div class="card">
+      <div class="card-title">Performance Audio · Bill of Quantities <span class="card-badge">Same as Option 3</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Wisdom Audio Insight P6i</div><div class="prod-desc">Flagship planar-magnetic in-wall speaker for L/C/R channels.</div></td><td class="r">3</td><td class="r">6,27,490</td><td class="r">18,82,470</td></tr>
+          <tr><td>2</td><td><div class="prod-name">Phasetech CI 70X</div><div class="prod-desc">High-performance in-wall surround speaker with coaxial driver design.</div></td><td class="r">4</td><td class="r">57,000</td><td class="r">2,28,000</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Phase Technology CI7.3X</div><div class="prod-desc">Three-way in-ceiling speaker for Dolby Atmos / DTS:X height channels.</div></td><td class="r">6</td><td class="r">54,000</td><td class="r">3,24,000</td></tr>
+          <tr><td>4</td><td><div class="prod-name">MAG DBA18 Subwoofers</div><div class="prod-desc">Dual-bandpass 18″ subwoofer with sealed cabinet architecture.</div></td><td class="r">2</td><td class="r">2,20,000</td><td class="r">4,40,000</td></tr>
+          <tr><td>5</td><td><div class="prod-name">MAG Amp</div><div class="prod-desc">Dedicated high-current subwoofer amplifier.</div></td><td class="r">1</td><td class="r">5,60,000</td><td class="r">5,60,000</td></tr>
+          <tr><td>6</td><td><div class="prod-name">Trinnov Amplitude Amplifiers (8/16 Ch)</div><div class="prod-desc">Multi-channel Class-AB power amplifier.</div></td><td class="r">1</td><td class="r">12,95,000</td><td class="r">12,95,000</td></tr>
+          <tr><td>7</td><td><div class="prod-name">Anthem AVM 70</div><div class="prod-desc">Premium AV processor with Anthem Room Correction (ARC Genesis).</div></td><td class="r">1</td><td class="r">5,15,000</td><td class="r">5,15,000</td></tr>
+          <tr class="tot-row"><td></td><td>Audio System Total</td><td class="r"></td><td class="r"></td><td class="r">₹52,44,470</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o4-video" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Video & Projection · Barco I600 4k8 <span class="card-badge">Same as Option 2</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>Product</th><th class="r">Qty</th><th class="r">Rate (₹)</th><th class="r">Amount (₹)</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="prod-name">Barco I600 4k8 Projector with Lens</div><div class="prod-desc">Professional-grade 4K UHD laser phosphor projector · 8,000 ISO lumens · DynaBlack contrast up to 20,000:1 · HDMI 2.1 for 4K@120Hz HDR.</div></td><td class="r">1</td><td class="r">27,50,000</td><td class="r">27,50,000</td></tr>
+          <tr><td>2</td><td><div class="prod-name">12ft Acoustic Transparent Screen</div><div class="prod-desc">Fixed-frame acoustically transparent screen.</div></td><td class="r">1</td><td class="r">3,15,000</td><td class="r">3,15,000</td></tr>
+          <tr><td>3</td><td><div class="prod-name">Projector Stand</div><div class="prod-desc">Custom ceiling mount.</div></td><td class="r">1</td><td class="r">5,200</td><td class="r">5,200</td></tr>
+          <tr class="tot-row"><td></td><td>Video System Total</td><td class="r"></td><td class="r"></td><td class="r">₹30,70,200</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div id="sub-o4-summary" class="sub-panel">
+    <div class="card">
+      <div class="card-title">Option 4 · Pricing Summary <span class="card-badge">Discounted</span></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Component</th><th class="r">List (₹)</th><th class="r">Offer (₹)</th><th class="r">Savings (₹)</th></tr></thead>
+        <tbody>
+          <tr><td><div class="prod-name">Performance Audio System</div><div class="prod-desc">Wisdom LCR, Phasetech Surrounds, Heights, Subs, Anthem AVM 70 Processor & Trinnov Amplitude</div></td><td class="r">52,44,470</td><td class="r">29,40,400</td><td class="r" style="color:#10b981;font-weight:700">23,04,070</td></tr>
+          <tr><td><div class="prod-name">Video & Projection · Barco I600 4k8</div><div class="prod-desc">Professional installation laser projector, mount & acoustic transparent screen</div></td><td class="r">30,70,200</td><td class="r">21,25,455</td><td class="r" style="color:#10b981;font-weight:700">9,44,745</td></tr>
+          <tr><td><div class="prod-name">Premium Seating</div><div class="prod-desc">Motorised recliners — client selection</div></td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r" style="color:var(--text-muted)">As Actual</td><td class="r">—</td></tr>
+          <tr><td><div class="prod-name">Installation & Calibration</div><div class="prod-desc">Cabling, integration, rack assembly & Anthem ARC Genesis calibration</div></td><td class="r">11,59,760</td><td class="r">3,50,000</td><td class="r" style="color:#10b981;font-weight:700">8,09,760</td></tr>
+          <tr class="tot-row"><td>Total</td><td class="r">₹94,74,430</td><td class="r">₹54,15,855</td><td class="r" style="color:#10b981">₹40,58,575</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="total-hero"><div><div class="total-hero-lbl">Option 4 · Final Offer</div><div class="total-hero-name">Performance Audio + Barco I600</div></div><div style="text-align:right"><div class="total-hero-amount">₹54,15,855</div><div class="total-hero-note">Seating at actuals · Prices include taxes</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== PROJECTOR COMPARISON ===================== -->
+<div id="tab-projcompare" class="tab-panel">
+  <div class="sec-eyebrow">Projection Engine</div>
+  <div class="sec-title">Barco Medea vs Barco I600 4k8</div>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-title">Brightness Comparison <span class="card-badge">ANSI / ISO Lumens</span></div>
+    <div class="bright-bars">
+      <div class="bb-row">
+        <div class="bb-head"><span class="bb-name">Barco I600 4k8</span><span class="bb-val" style="color:#0891b2">8,000 lm</span></div>
+        <div class="bb-track"><div class="bb-fill" style="width:100%;background:linear-gradient(135deg,#0f766e,#0891b2)"></div></div>
+        <div class="bb-note">Professional installation spec · Brighter than the Medea · Excellent for larger screens or rooms with some ambient light · HDMI 2.1 supports 4K@120Hz HDR</div>
+      </div>
+      <div class="bb-row">
+        <div class="bb-head"><span class="bb-name">Barco Medea</span><span class="bb-val" style="color:var(--purple-light)">6,500 lm</span></div>
+        <div class="bb-track"><div class="bb-fill" style="width:81.25%;background:var(--grad-card)"></div></div>
+        <div class="bb-note">Cinema-tuned brightness · Custom aspherical glass for dedicated dark cinema rooms · Pulse SSP engine with HDR10 low-latency processing</div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout-lbl">Key Insight</div>
+      More lumens aren't always better. The I600 pushes more light for installation flexibility and is optimised for larger screens or ambient-light rooms. The Medea is tuned specifically for dark dedicated cinema rooms with custom optics engineered for image quality over raw light output. Both projectors use Barco's Pulse platform and RealColor processing — the difference is how the light is shaped.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Spec Comparison</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Specification</th><th>Barco Medea</th><th>Barco I600 4k8</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:700">Class</td><td>Cinema-grade flagship</td><td>Professional installation</td></tr>
+        <tr><td style="font-weight:700">Resolution</td><td>4K UHD (3840 × 2160)</td><td>4K UHD via SuperShift</td></tr>
+        <tr><td style="font-weight:700">Brightness</td><td style="color:var(--purple-light);font-weight:700">6,500 ANSI lumens</td><td style="color:#0891b2;font-weight:700">8,000 ISO lumens</td></tr>
+        <tr><td style="font-weight:700">Imaging</td><td>0.66″ DLP · Laser Phosphor</td><td>0.8″ DLP · Laser Phosphor</td></tr>
+        <tr><td style="font-weight:700">HDR</td><td>HDR10 via Barco Pulse SSP</td><td>HDR10 · HDMI 2.1 · 4K@120Hz</td></tr>
+        <tr><td style="font-weight:700">Contrast</td><td>Custom aspherical optics</td><td>DynaBlack up to 20,000:1</td></tr>
+        <tr><td style="font-weight:700">Colour Science</td><td>Barco RealColor · Rec.709</td><td>Barco RealColor · Rec.709</td></tr>
+        <tr><td style="font-weight:700">Light Source Life</td><td>Up to 40,000 hrs</td><td>Up to 20,000 hrs</td></tr>
+        <tr><td style="font-weight:700">MRP</td><td>₹41,00,000</td><td>₹27,50,000</td></tr>
+        <tr><td style="font-weight:700">Best for</td><td>Dedicated cinema rooms</td><td>Premium cinemas & larger rooms</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===================== COMPARE ALL ===================== -->
+<div id="tab-compare" class="tab-panel">
+  <div class="sec-eyebrow">Side-by-Side</div>
+  <div class="sec-title">All Four Options — Final Offer Comparison</div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-title">Component-Level Comparison <span class="card-badge">Final Offer Pricing</span></div>
+    <div class="compare-grid">
+      <div class="cg-header">Component</div>
+      <div class="cg-header r">Opt 1 (₹)<br><span style="font-weight:500;font-size:8px">Ref + Medea</span></div>
+      <div class="cg-header r">Opt 2 (₹)<br><span style="font-weight:500;font-size:8px">Ref + I600</span></div>
+      <div class="cg-header r">Opt 3 (₹)<br><span style="font-weight:500;font-size:8px">Perf + Medea</span></div>
+      <div class="cg-header r">Opt 4 (₹)<br><span style="font-weight:500;font-size:8px">Perf + I600</span></div>
+
+      <div class="cg-cell"><div class="prod-name">Audio System</div><div class="prod-desc">LCR, Surrounds, Heights, Subs, Processor & Amp</div></div>
+      <div class="cg-cell r">54,50,402</div>
+      <div class="cg-cell r">54,50,402</div>
+      <div class="cg-cell r highlight">29,40,400</div>
+      <div class="cg-cell r highlight">29,40,400</div>
+
+      <div class="cg-cell"><div class="prod-name">Video & Projection</div><div class="prod-desc">Projector, Mount & Acoustic Screen</div></div>
+      <div class="cg-cell r">31,42,400</div>
+      <div class="cg-cell r highlight">21,25,455</div>
+      <div class="cg-cell r">31,42,400</div>
+      <div class="cg-cell r highlight">21,25,455</div>
+
+      <div class="cg-cell"><div class="prod-name">Premium Seating</div><div class="prod-desc">Motorised Recliners — Client Selection</div></div>
+      <div class="cg-cell r" style="color:var(--text-muted)">As Actual</div>
+      <div class="cg-cell r" style="color:var(--text-muted)">As Actual</div>
+      <div class="cg-cell r" style="color:var(--text-muted)">As Actual</div>
+      <div class="cg-cell r" style="color:var(--text-muted)">As Actual</div>
+
+      <div class="cg-cell"><div class="prod-name">Installation & Calibration</div><div class="prod-desc">Cabling, Rack, Integration & Calibration</div></div>
+      <div class="cg-cell r">3,50,000</div>
+      <div class="cg-cell r">3,50,000</div>
+      <div class="cg-cell r">3,50,000</div>
+      <div class="cg-cell r">3,50,000</div>
+
+      <div class="cg-total">Total Investment</div>
+      <div class="cg-total r" style="color:var(--purple-light)">₹89,42,802</div>
+      <div class="cg-total r" style="color:#0891b2">₹79,25,857</div>
+      <div class="cg-total r" style="color:var(--pink)">₹64,32,800</div>
+      <div class="cg-total r" style="color:#10b981">₹54,15,855</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-l1"><span>Layer 1</span> Group</div>
+  <div class="footer-ref">Confidential · Prepared for Mr. Karan Gupta · Prices include taxes</div>
+</div>
+
+<script>
+function toggleTheme(){
+  const isLight=document.documentElement.getAttribute('data-theme')==='light';
+  document.documentElement.setAttribute('data-theme',isLight?'dark':'light');
+  document.getElementById('theme-icon').innerHTML=isLight
+    ?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+    :'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+  document.getElementById('theme-label').textContent=isLight?'Dark':'Light';
+}
+function showTab(id,el){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showSub(id,btn){
+  const at=document.querySelector('.tab-panel.active');
+  if(at){at.querySelectorAll('.sub-panel').forEach(p=>p.classList.remove('active'));at.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active'));}
+  document.getElementById('sub-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
